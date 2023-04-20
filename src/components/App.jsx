@@ -28,15 +28,23 @@ export class App extends Component {
     }))
   };
 
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value })
+  };
+
   render() {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+    const visibleContacts = contacts.filter(item => item.name.toLowerCase().includes(normalizedFilter));
+    
     return (
     <Container>
       <Section title="Phonebook">
           <ContactForm onSave={this.addContact} />
       </Section>
         <Section title="Contacts">
-          <FindContacts/>
-        <ContactList contacts={this.state.contacts} onDelete={this.deleteContact} />
+          <FindContacts value={filter} onChange={this.changeFilter} />
+        <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />
       </Section>
     </Container>
   );
