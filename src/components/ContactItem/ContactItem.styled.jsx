@@ -19,6 +19,9 @@ font-weight: 500;
 `;
 
 export const Button = styled.button`
+display: flex;
+justify-content: center;
+align-items: center;
 order: 1;
 border-radius: 50%;
 width: 34px;
