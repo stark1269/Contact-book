@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, Label, Input, Button, Error } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
@@ -42,4 +43,8 @@ export const ContactForm = ({onSave}) => {
     </Form>
     </Formik>
   )
+};
+
+ContactForm.propTypes = {
+  onSave: PropTypes.func.isRequired,
 };

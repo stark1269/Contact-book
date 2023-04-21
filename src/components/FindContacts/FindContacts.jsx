@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Label } from "components/ContactForm/ContactForm.styled";
 import { Input } from "./FindContacts.styled";
 
@@ -12,4 +13,9 @@ export const FindContacts = ({ value, onChange }) => {
       />
     </Label>
   )
+};
+
+FindContacts.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
