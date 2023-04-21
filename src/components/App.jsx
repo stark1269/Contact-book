@@ -4,6 +4,7 @@ import { ContactList } from "./ContactList/ContactList";
 import { Container } from "./Container/Container";
 import { Section } from "./Section/Section";
 import { FindContacts } from "./FindContacts/FindContacts";
+import Notiflix from "notiflix";
 import contacts from '../contacts.json';
 
 export class App extends Component {
@@ -14,7 +15,7 @@ export class App extends Component {
 
   addContact = (newContact, name) => {
     if (this.state.contacts.some(value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
-      alert(`${name} is already in contacts!`)
+      Notiflix.Notify.failure(`${name} is already in contacts!`);
     } else {
       this.setState(prevState => ({
         contacts: [newContact, ...prevState.contacts],

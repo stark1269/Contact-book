@@ -1,13 +1,15 @@
+import { Label } from "components/ContactForm/ContactForm.styled";
+import { Input } from "./FindContacts.styled";
+
 export const FindContacts = ({ value, onChange }) => {
   return (
-    <label>
+    <Label>
       Find contacts by name
-      <br />
-      <input
+      <Input
         type="text"
         value={value}
         onChange={onChange}
       />
-    </label>
+    </Label>
   )
 };

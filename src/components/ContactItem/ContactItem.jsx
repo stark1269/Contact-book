@@ -1,10 +1,10 @@
-import { AiOutlineDelete } from 'react-icons/ai';
+import { Item, Text, Button, Icon } from './ContactItem.styled';
 
 export const ContactItem = ({ onDelete, item: { name, number, id } } ) => {
   return (
-    <li>
-      <p>{name}: {number}</p>
-      <button onClick={() => onDelete(id)} type='button'><AiOutlineDelete /></button>
-    </li>
+    <Item>
+      <Text>{name}: {number}</Text>
+      <Button onClick={() => onDelete(id)} type='button'><Icon /></Button>
+    </Item>
   )
 };

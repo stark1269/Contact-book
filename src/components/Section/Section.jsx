@@ -1,7 +1,9 @@
+import { Title, AfterTitle } from "./Section.styled";
+
 export const Section = ({ children, title }) => {
   return (
     <section>
-      {title === 'Phonebook' ? <h1>{title}</h1> : <h2>{title}</h2>}
+      {title === 'Phonebook' ? <Title>{title}</Title> : <AfterTitle>{title}</AfterTitle>}
       {children}
     </section>
   )

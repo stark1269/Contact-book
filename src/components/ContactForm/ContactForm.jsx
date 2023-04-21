@@ -1,4 +1,5 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+import { Form, Label, Input, Button, Error } from './ContactForm.styled';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 
@@ -29,20 +30,15 @@ export const ContactForm = ({onSave}) => {
     }
     >
     <Form>
-      <label>Name
-        <Field
-            name="name"
-          ></Field>
-          <ErrorMessage name="name" component="div"/>
-      </label>
-      <label>Number
-        <Field
-          name="number"
-          type="tel"
-          ></Field>
-          <ErrorMessage name="number" component="div"/>
-      </label>
-      <button type="submit">Add contact</button>
+      <Label>Name
+        <Input name="name" />
+        <Error name="name" component="div"/>
+      </Label>
+      <Label>Number
+        <Input name="number" type="tel" />
+        <Error name="number" component="div"/>
+      </Label>
+      <Button type="submit">Add contact</Button>
     </Form>
     </Formik>
   )
