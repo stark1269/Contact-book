@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, Label, Input, Button, Error } from './ContactForm.styled';
-import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 
 const Schema = Yup.object({
@@ -22,10 +21,9 @@ export const ContactForm = ({onSave}) => {
     }
       validationSchema={Schema}
       onSubmit={(values, actions) => {
-        onSave({
-          ...values,
-          id: nanoid(),
-        }, values.name);
+        onSave(
+          values,
+          values.name);
         actions.resetForm();
       }
     }

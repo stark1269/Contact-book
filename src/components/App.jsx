@@ -5,6 +5,7 @@ import { Container } from "./Container/Container";
 import { Section } from "./Section/Section";
 import { FindContacts } from "./FindContacts/FindContacts";
 import Notiflix from "notiflix";
+import { nanoid } from 'nanoid';
 import contacts from '../contacts.json';
 
 export class App extends Component {
@@ -28,10 +29,11 @@ export class App extends Component {
     }
   };
 
-  addContact = (newContact, name) => {
+  addContact = (value, name) => {
     if (this.state.contacts.some(value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
       Notiflix.Notify.failure(`${name} is already in contacts!`);
     } else {
+      const newContact = {...value, id: nanoid()}
       this.setState(prevState => ({
         contacts: [newContact, ...prevState.contacts],
       }))
