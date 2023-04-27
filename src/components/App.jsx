@@ -13,6 +13,18 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = JSON.parse(localStorage.getItem('contacts'));
+    this.setState({
+    contacts,
+  })};
+
+  componentDidUpdate(_, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    }
+  };
+
   addContact = (newContact, name) => {
     if (this.state.contacts.some(value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
       Notiflix.Notify.failure(`${name} is already in contacts!`);
