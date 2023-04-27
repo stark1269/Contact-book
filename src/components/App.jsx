@@ -14,10 +14,13 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contacts = JSON.parse(localStorage.getItem('contacts'));
-    this.setState({
-    contacts,
-  })};
+    const SavedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (SavedContacts !== null) {
+      this.setState({ contacts: SavedContacts });
+    } else {
+      this.setState({ contacts })
+    }
+  };
 
   componentDidUpdate(_, prevState) {
     if (prevState.contacts !== this.state.contacts) {
