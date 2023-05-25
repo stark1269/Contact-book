@@ -1,7 +1,8 @@
-import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import { Form, Label, Input, Button, Error } from './ContactForm.styled';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 
 const Schema = Yup.object({
   name: Yup.string().required('Required')
@@ -10,7 +11,9 @@ const Schema = Yup.object({
     .matches(/(\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9})/, 'Invalid by number'),
 });
 
-export const ContactForm = ({onSave}) => {
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={
@@ -21,9 +24,7 @@ export const ContactForm = ({onSave}) => {
     }
       validationSchema={Schema}
       onSubmit={(values, actions) => {
-        onSave(
-          values,
-          values.name);
+        dispatch(addContact(values));
         actions.resetForm();
       }
     }
@@ -41,8 +42,4 @@ export const ContactForm = ({onSave}) => {
     </Form>
     </Formik>
   )
-};
-
-ContactForm.propTypes = {
-  onSave: PropTypes.func.isRequired,
 };
