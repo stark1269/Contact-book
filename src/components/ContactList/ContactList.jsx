@@ -3,7 +3,8 @@ import { List } from "./ContactList.styled";
 import { useSelector } from "react-redux";
 
 export const ContactList = () => {
-  const { contacts, filter } = useSelector(state => state);
+  const { filter } = useSelector(state => state);
+  const { contacts } = useSelector(state => state.contacts);
   const visibleContacts = contacts.filter(item => item.name.toLowerCase().includes(filter.toLowerCase()));
 
   return (

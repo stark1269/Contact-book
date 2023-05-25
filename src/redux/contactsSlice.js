@@ -1,23 +1,25 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import initContacts from '../contacts.json';
+import initState from '../contacts.json'
 import Notiflix from "notiflix";
 
 const contactsSlice = createSlice({
   name: "contacts",
-  initialState: initContacts,
+  initialState: {
+    contacts: initState,
+  },
   reducers: {
     addContact(state, action) {
-      if (state.some(value => value.name.toLocaleLowerCase() === action.payload.name.toLocaleLowerCase())) {
+      if (state.contacts.some(value => value.name.toLocaleLowerCase() === action.payload.name.toLocaleLowerCase())) {
         Notiflix.Notify.failure(`${action.payload.name} is already in contacts!`);
       } else {
         const newContact = { ...action.payload, id: nanoid() }
-        state.unshift(newContact);
+        state.contacts.unshift(newContact);
       }
     },
     deleteContact(state, action) {
-      return state.filter(item => item.id !== action.payload);
+      state.contacts = state.contacts.filter(item => item.id !== action.payload);
     },
   },
 });
