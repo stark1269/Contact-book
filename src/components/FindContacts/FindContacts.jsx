@@ -2,11 +2,11 @@ import { Label } from "components/ContactForm/ContactForm.styled";
 import { Input } from "./FindContacts.styled";
 import { setFilter } from "redux/filterSlice";
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilter } from "redux/selectors";
+import { selectFilter } from "redux/selectors";
 
 export const FindContacts = () => {
   const dispatch = useDispatch();
-  const stateFilter = useSelector(getFilter);
+  const stateFilter = useSelector(selectFilter);
 
   return (
     <Label>

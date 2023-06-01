@@ -1,34 +1,56 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import initState from '../contacts.json'
-import Notiflix from "notiflix";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import { addContact, deleteContact, fetchContacts } from "./operations";
+
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
+};
+
+// 
+
+const contactsPending = (state) => {
+  state.isLoading = true
+};
+
+const contactsRejected = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = payload;
+};
+
+// 
+
+const getContactsFulfilled = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  state.items = payload;
+};
+
+const addContactsFulfilled = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  state.items.unshift(payload);
+};
+
+const deleteContactsFulfilled = (state, { payload }) => {
+  state.isLoading = false;
+  state.error = '';
+  state.items = state.items.filter(item => item.id !== payload.id);
+};
+
+// 
 
 const contactsSlice = createSlice({
   name: "contacts",
-  initialState: {
-    contacts: initState,
-  },
-  reducers: {
-    addContact(state, action) {
-      if (state.contacts.some(value => value.name.toLocaleLowerCase() === action.payload.name.toLocaleLowerCase())) {
-        Notiflix.Notify.failure(`${action.payload.name} is already in contacts!`);
-      } else {
-        const newContact = { ...action.payload, id: nanoid() }
-        state.contacts.unshift(newContact);
-      }
-    },
-    deleteContact(state, action) {
-      state.contacts = state.contacts.filter(item => item.id !== action.payload);
-    },
-  },
+  initialState,
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchContacts.fulfilled, getContactsFulfilled)
+      .addCase(addContact.fulfilled, addContactsFulfilled)
+      .addCase(deleteContact.fulfilled, deleteContactsFulfilled)
+      .addMatcher(isAnyOf(fetchContacts.pending, addContact.pending, deleteContact.pending), contactsPending)
+      .addMatcher(isAnyOf(fetchContacts.rejected, addContact.rejected, deleteContact.rejected), contactsRejected)
+  }
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
-
-const persistConfig = {
-  key: 'contacts',
-  storage,
-};
-
-export const persistedContactsReducer = persistReducer(persistConfig, contactsSlice.reducer);
+export const contactsReducer = contactsSlice.reducer;

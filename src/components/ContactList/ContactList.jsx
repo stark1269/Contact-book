@@ -1,21 +1,30 @@
 import { ContactItem } from "components/ContactItem/ContactItem";
 import { List } from "./ContactList.styled";
-import { useSelector } from "react-redux";
-import { getContacts, getFilter } from "redux/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { selectContacts, selectFilteredContacts } from "redux/selectors";
+import { useEffect } from "react";
+import { fetchContacts } from "redux/operations";
+import { ProgressBar } from  'react-loader-spinner'
 
 export const ContactList = () => {
-  const stateFilter = useSelector(getFilter);
-  const stateContacts = useSelector(getContacts);
-  
-  const visibleContacts = stateContacts.filter(item => item.name.toLowerCase().includes(stateFilter.toLowerCase()));
+  const { isLoading, error } = useSelector(selectContacts);
+  const filteredContacts = useSelector(selectFilteredContacts);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchContacts())
+  }, [dispatch])
+  
   return (
-    <List>
-      {visibleContacts.map(item => {
-        return (
-          <ContactItem key={item.id} item={item}></ContactItem>
-        )
-      })}
-    </List>
+    <>
+      {isLoading ? <h1><ProgressBar /></h1> : <List>
+        {filteredContacts.map(item => {
+          return (
+            <ContactItem key={item.id} item={item}></ContactItem>
+          )
+        })}
+      </List>}
+      {error && <h1>{error}</h1>}
+    </>
   )
 };

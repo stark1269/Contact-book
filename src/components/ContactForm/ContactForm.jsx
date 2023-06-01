@@ -1,8 +1,10 @@
 import { Formik } from 'formik';
 import { Form, Label, Input, Button, Error } from './ContactForm.styled';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/operations';
+import Notiflix from "notiflix";
+import { selectContactsItems } from 'redux/selectors';
 
 const Schema = Yup.object({
   name: Yup.string().required('Required')
@@ -13,6 +15,8 @@ const Schema = Yup.object({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
+  const contacts = useSelector(selectContactsItems);
+  console.log(contacts)
 
   return (
     <Formik
@@ -21,10 +25,14 @@ export const ContactForm = () => {
           name: '',
           number: '',
         }
-    }
+      }
       validationSchema={Schema}
       onSubmit={(values, actions) => {
-        dispatch(addContact(values));
+        if (contacts.some(value => value.name.toLocaleLowerCase() === values.name.toLocaleLowerCase())) {
+          Notiflix.Notify.failure(`${values.name} is already in contacts!`);
+        } else {
+          dispatch(addContact(values));
+        }
         actions.resetForm();
       }
     }
