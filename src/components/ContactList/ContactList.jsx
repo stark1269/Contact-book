@@ -17,7 +17,7 @@ export const ContactList = () => {
   
   return (
     <>
-      {isLoading ? <h1><ProgressBar /></h1> : <List>
+      {isLoading ? <ProgressBar /> : <List>
         {filteredContacts.map(item => {
           return (
             <ContactItem key={item.id} item={item}></ContactItem>
