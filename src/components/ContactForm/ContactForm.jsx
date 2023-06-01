@@ -16,7 +16,6 @@ const Schema = Yup.object({
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContactsItems);
-  console.log(contacts)
 
   return (
     <Formik
