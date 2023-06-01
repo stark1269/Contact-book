@@ -24,7 +24,7 @@ export const ContactList = () => {
           )
         })}
       </List>}
-      {error && <h1>{error}</h1>}
+      {error && <p>{error}</p>}
     </>
   )
 };
