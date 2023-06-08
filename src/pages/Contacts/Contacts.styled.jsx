@@ -2,11 +2,21 @@ import styled from "styled-components";
 import photo from '../../images/photo.jpeg';
 
 export const Div = styled.div`
-  padding: 42px;
-  padding-top: 124px;
-  background-image: linear-gradient(rgba(10,10,10,.8),rgba(10,10,10,.8)),url(${photo});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 142px;
+  padding-bottom: 72px;
+  background-image: linear-gradient(rgba(10,10,10,.7),rgba(10,10,10,.7)),url(${photo});
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Wrapper = styled.div`
+  padding: 72px;
+  background-color: #000000ee;
   width: 100%;
   height: 100%;
 `;

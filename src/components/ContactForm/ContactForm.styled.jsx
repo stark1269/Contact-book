@@ -4,8 +4,8 @@ import styled from 'styled-components';
 export const Form = styled(FormikForm)`
 display: flex;
 flex-direction: column;
+align-items: center;
 gap: 12px;
-width: 30%;
 margin-bottom: 32px;
 `;
 

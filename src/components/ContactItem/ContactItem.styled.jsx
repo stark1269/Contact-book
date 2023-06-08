@@ -5,20 +5,19 @@ export const Item = styled.li`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: end;
   gap: 12px;
+  padding: 12px;
   overflow: auto;
   width: calc((100% - 90px) / 6);
-  min-height: 300px;
-  border: 3px solid whitesmoke;;
+  min-height: 280px;
   border-radius: 6px;
+  background-color: #232323;
 `;
 
 export const Text = styled.p`
-color: whitesmoke;
-font-size: 32px;
-font-weight: 500;
+color: #f5f5f575;
+font-size: 22px;
 `;
 
 export const Button = styled.button`
@@ -31,13 +30,13 @@ align-items: center;
 border-radius: 50%;
 width: 54px;
 height: 54px;
-border: 1px solid red;
-color: #ff00009a;
+border: 1px solid #ffae009a;
+color: #ffae009a;
 background-color: transparent;
 transition: background-color 300ms linear, color 300ms linear;
 :hover, :focus {
   color: white;
-  background-color: #ff00009a;
+  background-color: #ffae009a;
 }
 `;
 
