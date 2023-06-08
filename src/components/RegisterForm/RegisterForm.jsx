@@ -1,6 +1,7 @@
-import { Formik, Form, Field } from 'formik';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import { Btn, Form, Input, Label } from './RegisterForm.styled';
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -19,20 +20,20 @@ export const RegisterForm = () => {
         resetForm();
       }}
     >
-      <Form>
-        <label>
+      <Form autoComplete='off'>
+        <Label>
           Username
-          <Field name="name" />
-        </label>
-        <label>
+          <Input name="name" />
+        </Label>
+        <Label>
           Email
-          <Field type="email" name="email" />
-        </label>
-        <label>
+          <Input type="email" name="email" />
+        </Label>
+        <Label>
           Password
-          <Field type="password" name="password" />
-        </label>
-        <button type="submit">Register</button>
+          <Input type="password" name="password" />
+        </Label>
+        <Btn type="submit">Register</Btn>
       </Form>
     </Formik>
   );

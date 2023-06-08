@@ -1,20 +1,22 @@
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from 'redux/auth/selectors';
-import { Link } from './Navigation.styled';
+import { Link, Nav } from './Navigation.styled';
+import { RiContactsBook2Line } from 'react-icons/ri';
+import { IoHome } from 'react-icons/io5';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
-    <nav>
+    <Nav>
       <Link to="/">
-        Home
+        <IoHome />
       </Link>
       {isLoggedIn && (
         <Link to="/contacts">
-          Tasks
+          <RiContactsBook2Line />
         </Link>
       )}
-    </nav>
+    </Nav>
   );
 };
