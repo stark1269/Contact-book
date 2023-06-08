@@ -1,5 +1,5 @@
 import { ContactItem } from "components/ContactItem/ContactItem";
-import { List } from "./ContactList.styled";
+import { List, Title } from "./ContactList.styled";
 import { useDispatch, useSelector } from "react-redux";
 import { selectContacts, selectFilteredContacts } from "redux/contacts/selectors";
 import { useEffect } from "react";
@@ -17,6 +17,7 @@ export const ContactList = () => {
   
   return (
     <>
+      {!filteredContacts.length && <Title>Your contact book is empty</Title>}
       {isLoading ? <ProgressBar /> : <List>
         {filteredContacts.map(item => {
           return (
