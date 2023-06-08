@@ -17,7 +17,8 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 500;
   color: #f5f5f583;
 `;
 
@@ -25,6 +26,7 @@ export const Btn = styled.button`
   font-size: 22px;
   padding: 6px;
   border-radius: 6px;
+  background-color: #606060;
   transition: background-color 250ms linear, color 250ms linear;
 
   :hover {

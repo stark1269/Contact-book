@@ -29,7 +29,7 @@ const getContactsFulfilled = (state, { payload }) => {
 const addContactsFulfilled = (state, { payload }) => {
   state.isLoading = false;
   state.error = '';
-  state.items.unshift(payload);
+  state.items.push(payload);
 };
 
 const deleteContactsFulfilled = (state, { payload }) => {

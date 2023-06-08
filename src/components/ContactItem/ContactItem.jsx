@@ -8,7 +8,8 @@ export const ContactItem = ({ item: { name, number, id } }) => {
 
   return (
     <Item>
-      <Text>{name}: {number}</Text>
+      <Text>{name}</Text>
+      <Text>{number}</Text>
       <Button onClick={() => dispatch(deleteContact(id))} type='button'><Icon /></Button>
     </Item>
   )

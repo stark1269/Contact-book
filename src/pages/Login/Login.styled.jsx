@@ -7,7 +7,7 @@ export const Div = styled.div`
   align-items: center;
   justify-content: center;
   gap: 18px;
-  background-image: linear-gradient(rgba(10,10,10,.7),rgba(10,10,10,.7)),url(${photo});;
+  background-image: linear-gradient(rgba(10,10,10,.7),rgba(10,10,10,.7)),url(${photo});
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;

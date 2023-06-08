@@ -4,42 +4,40 @@ import styled from 'styled-components';
 export const Form = styled(FormikForm)`
 display: flex;
 flex-direction: column;
-gap: 16px;
-padding: 12px;
-border-radius: 4px;
-border: 1px solid gray;
+gap: 12px;
+width: 30%;
+margin-bottom: 32px;
 `;
 
 export const Label = styled.label`
 display: flex;
 flex-direction: column;
-gap: 8px;
+gap: 4px;
 font-size: 18px;
 font-weight: 500;
+color: #f5f5f583;
 `;
 
 export const Input = styled(FormikField)`
-padding: 4px;
-font-size: 14px;
-border-radius: 4px;
-border: 1px solid gray;
-box-shadow: 4px 4px 6px 0 rgba(217,217,217,1);
+padding: 6px;
+font-size: 22px;
+border-radius: 6px;
 `;
 
 export const Button = styled.button`
-font-size: 14px;
-width: 100px;
-border-radius: 4px;
-border: 1px solid gray;
-box-shadow: 4px 4px 6px 0 rgba(217,217,217,1);
+width: 150px;
+font-size: 22px;
+border-radius: 6px;
+background-color: #606060;
 transition: background-color 300ms linear, color 300ms linear;
-:hover, :focus {
-  background-color: #71A92C;
-  color: white;
+
+:hover {
+  background-color: #569271;
+  color: whitesmoke;
 }
 `;
 
 export const Error = styled(ErrorMessage)`
-color: red;
-font-size: 14px;
+color: #ff00009a;
+font-size: 18px;
 `;

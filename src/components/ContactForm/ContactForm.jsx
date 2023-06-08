@@ -36,7 +36,7 @@ export const ContactForm = () => {
       }
     }
     >
-    <Form>
+    <Form autoComplete='off'>
       <Label>Name
         <Input name="name" />
         <Error name="name" component="div"/>

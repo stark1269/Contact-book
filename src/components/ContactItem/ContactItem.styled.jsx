@@ -2,41 +2,46 @@ import styled from "styled-components";
 import { AiOutlineDelete } from 'react-icons/ai';
 
 export const Item = styled.li`
-display: flex;
-justify-content: space-between;
-align-items: baseline;
-gap: 8px;
-:after {
-  content: "";
-  height: 1px;
-  background-color: grey;
-  flex-grow: 1;
-}
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  overflow: auto;
+  width: calc((100% - 90px) / 6);
+  min-height: 300px;
+  border: 3px solid whitesmoke;;
+  border-radius: 6px;
 `;
 
 export const Text = styled.p`
+color: whitesmoke;
+font-size: 32px;
 font-weight: 500;
 `;
 
 export const Button = styled.button`
+position: absolute;
+bottom: 12px;
+right: 12px;
 display: flex;
 justify-content: center;
 align-items: center;
-order: 1;
 border-radius: 50%;
-width: 34px;
-height: 34px;
+width: 54px;
+height: 54px;
 border: 1px solid red;
-box-shadow: 2px 2px 6px 0px rgba(209,132,132,1);
-color: red;
+color: #ff00009a;
 background-color: transparent;
 transition: background-color 300ms linear, color 300ms linear;
 :hover, :focus {
   color: white;
-  background-color: red;
+  background-color: #ff00009a;
 }
 `;
 
 export const Icon = styled(AiOutlineDelete)`
+font-size: 34px;
 fill: currentColor;
 `;
