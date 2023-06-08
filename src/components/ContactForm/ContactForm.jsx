@@ -2,9 +2,9 @@ import { Formik } from 'formik';
 import { Form, Label, Input, Button, Error } from './ContactForm.styled';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import Notiflix from "notiflix";
-import { selectContactsItems } from 'redux/selectors';
+import { selectContactsItems } from 'redux/contacts/selectors';
 
 const Schema = Yup.object({
   name: Yup.string().required('Required')

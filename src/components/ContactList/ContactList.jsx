@@ -1,9 +1,9 @@
 import { ContactItem } from "components/ContactItem/ContactItem";
 import { List } from "./ContactList.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectContacts, selectFilteredContacts } from "redux/selectors";
+import { selectContacts, selectFilteredContacts } from "redux/contacts/selectors";
 import { useEffect } from "react";
-import { fetchContacts } from "redux/operations";
+import { fetchContacts } from "redux/contacts/operations";
 import { ProgressBar } from  'react-loader-spinner'
 
 export const ContactList = () => {
