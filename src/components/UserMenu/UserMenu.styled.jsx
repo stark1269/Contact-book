@@ -15,10 +15,11 @@ export const Btn = styled.button`
   font-size: 18px;
   padding: 6px;
   border-radius: 6px;
-  transition: background-color 250ms linear, color 250ms linear;
+  transition: background-color 250ms linear, color 250ms linear, transform 250ms linear;
 
   :hover {
     background-color: #ff00009a;
     color: whitesmoke;
+    transform: scale(1.1);
   }
 `;
