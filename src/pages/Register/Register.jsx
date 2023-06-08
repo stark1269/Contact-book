@@ -1,11 +1,12 @@
 import { RegisterForm } from "components/RegisterForm/RegisterForm";
+import { Div, Title } from "./Register.styled";
 
 const Register = () => {
   return (
-    <div>
-      <h2>Registration</h2>
+    <Div>
+      <Title>Registration</Title>
       <RegisterForm />
-    </div>
+    </Div>
   )
 };
 
