@@ -10,6 +10,7 @@ export const Item = styled.li`
   padding: 12px;
   overflow: auto;
   width: calc((100% - 90px) / 6);
+  min-width: 240px;
   min-height: 280px;
   border-radius: 6px;
   background-color: #232323;

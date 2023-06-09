@@ -1,4 +1,4 @@
-import { Form as FormikForm, Field as FormikField } from "formik";
+import { Form as FormikForm, Field as FormikField, ErrorMessage } from "formik";
 import styled from "styled-components";
 
 export const Form = styled(FormikForm)`
@@ -22,6 +22,15 @@ export const Label = styled.label`
   color: #f5f5f583;
 `;
 
+export const Span = styled.span`
+  position: relative;
+  ::after {
+    content: '*';
+    position: absolute;
+    color: #ff00009a;
+  }
+`;
+
 export const Btn = styled.button`
   font-size: 22px;
   padding: 6px;
@@ -33,4 +42,22 @@ export const Btn = styled.button`
     background-color: #569271;
     color: whitesmoke;
   }
+`;
+
+export const Error = styled(ErrorMessage)`
+color: #ff00009a;
+font-size: 18px;
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
+`;
+
+export const Button = styled.button`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 24px;
+  border: none;
+  background-color: transparent;
 `;

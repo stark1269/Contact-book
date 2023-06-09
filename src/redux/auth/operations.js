@@ -1,16 +1,7 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-
-const setToken = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearToken = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+import { clearToken, setToken } from 'services/services';
 
 export const register = createAsyncThunk(
   'auth/register',

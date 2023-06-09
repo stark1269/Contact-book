@@ -7,10 +7,9 @@ import Notiflix from "notiflix";
 import { selectContactsItems } from 'redux/contacts/selectors';
 
 const Schema = Yup.object({
-  name: Yup.string().required('Required')
-    .matches(/(^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$)/, 'Invalid by name'),
+  name: Yup.string().min(3, 'Min of 3 chars').max(10, 'Max of 10 chars').required('Required'),
   number: Yup.string().required('Required')
-    .matches(/(\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9})/, 'Invalid by number'),
+    .matches(/^\d{3}-\d{3}-\d{2}-\d{2}$/, 'Phone format 063-123-45-67'),
 });
 
 export const ContactForm = () => {
