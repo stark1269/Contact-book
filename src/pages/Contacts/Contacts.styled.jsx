@@ -5,8 +5,8 @@ export const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 142px;
-  padding-bottom: 72px;
+  padding-top: 224px;
+  padding-bottom: 224px;
   background-image: linear-gradient(rgba(10,10,10,.7),rgba(10,10,10,.7)),url(${photo});
   background-repeat: no-repeat;
   background-size: cover;
