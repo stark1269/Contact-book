@@ -55,9 +55,11 @@ export const Wrapper = styled.div`
 
 export const Button = styled.button`
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 2px;
+  right: 4px;
+  padding: 0;
   font-size: 24px;
   border: none;
+  color: black;
   background-color: transparent;
 `;
